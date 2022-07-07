@@ -1,8 +1,8 @@
 # Solana Editions
 
-# Install Anchor 
+# Install Dependencies 
 
-### AVM
+### AVM (Anchor Version Manager)
 
 ```bash
 # repo root
@@ -20,13 +20,19 @@ anchor --version
 ```
 
 
-# Solita
+### Install Solita
 
 ```bash
 # repo root
 yarn add -D @metaplex-foundation/solita
-yarn solita # automatically generates typescript bindings
 ```
 
 
 
+# Build Flow
+
+```bash
+cargo fmt
+anchor build
+yarn solita
+```
