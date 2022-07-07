@@ -1,35 +1,34 @@
-import { Program } from "@metaplex-foundation/mpl-core";
+import { Program, config } from "@metaplex-foundation/mpl-core";
 
 import { PublicKey } from "@solana/web3.js";
 import * as errors from "./generated/errors";
 import * as instructions from "./generated/instructions";
 import * as accounts from "./generated/accounts";
-import BN from "bn.js";
+import { PROGRAM_ID } from './generated';
+import { TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID } from '@solana/spl-token'
+
+// import BN from "bn.js";
 
 export class EditionsProgram extends Program {
+    static readonly PUBKEY = PROGRAM_ID;
+    static readonly instructions = instructions;
+    static readonly errors = errors;
+    static readonly accounts = accounts;
+
+
+    // our program prefix
   static readonly PLATFORM_SETTINGS_PREFIX = "platform_settings";
   static readonly MINT_AUTHORITY_PREFIX = "mint_authority";
   static readonly METADATA_AUTHORITY_PREFIX = "metadata_authority";
   static readonly TOKEN_PARAMETERS_PREFIX = "token_parameters";
   static readonly PRIMARY_SALE_RECEIPT_PREFIX = "primary_sale_receipt";
-
-  static readonly PUBKEY = new PublicKey(
-    "GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y"
-  );
-  static readonly instructions = instructions;
-  static readonly errors = errors;
-  static readonly accounts = accounts;
-
-  static readonly TOKEN_PROGRAM_ID = new PublicKey(
-    "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
-  );
-  static readonly SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
-    "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
-  );
+  // including metaplex metadata prefix
   static readonly METADATA_PREFIX = "metadata";
-  static readonly TOKEN_METADATA_PROGRAM_ID = new PublicKey(
-    "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
-  );
+
+  static readonly TOKEN_PROGRAM_ID = TOKEN_PROGRAM_ID;
+  static readonly SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = ASSOCIATED_TOKEN_PROGRAM_ID;
+  static readonly TOKEN_METADATA_PROGRAM_ID = new PublicKey(config.programs.metadata);
+
 
   static async findAssociatedTokenAccountAddress(
     mint: PublicKey,
@@ -41,7 +40,7 @@ export class EditionsProgram extends Program {
     );
   }
 
-  static async findAdminAddress(): Promise<[PublicKey, number]> {
+  static async findPlatformSettingsAddress(): Promise<[PublicKey, number]> {
     return await PublicKey.findProgramAddress(
       [Buffer.from(this.PLATFORM_SETTINGS_PREFIX)],
       this.PUBKEY
