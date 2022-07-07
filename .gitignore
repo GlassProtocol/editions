@@ -4,6 +4,10 @@
 node_modules
 test-ledger
 .crates
+
 target/*
+!target/deploy
+target/deploy/*
+
 !target/deploy/editions-keypair.json
-!/target/idl
+!target/idl
