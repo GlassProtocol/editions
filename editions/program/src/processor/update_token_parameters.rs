@@ -1,4 +1,4 @@
-use crate::{UpdateTokenParameters};
+use crate::UpdateTokenParameters;
 use anchor_lang::prelude::*;
 
 impl<'info> UpdateTokenParameters<'info> {
@@ -8,9 +8,8 @@ impl<'info> UpdateTokenParameters<'info> {
         primary_sale_token_limit: Option<u32>,
         primary_sale_price: Option<u64>,
     ) -> Result<()> {
-
         let mut token_parameters_data = *self.token_parameters;
-        
+
         if let Some(max_supply) = max_supply {
             token_parameters_data.max_supply = max_supply
         }

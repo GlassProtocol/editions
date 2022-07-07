@@ -20,7 +20,7 @@ pub struct PlatformSettings {
 impl PlatformSettings {
     pub const LEN: usize = 8
     + 32    // platform_treasury
-    + 32;   // platform_signer
+    + 32; // platform_signer
 }
 
 //==============================
@@ -52,8 +52,7 @@ impl TokenParameters {
     + 4     // primary_sale_token_limit
     + 4     // number_of_sales
     + 2     // platform_fee_basis_points
-    + 2;     // creator_fee_basis_points
-
+    + 2; // creator_fee_basis_points
 
     pub fn primary_primary_sale_price(&self, quantity: u64) -> u64 {
         quantity * self.primary_sale_price
@@ -84,9 +83,8 @@ impl PrimarySaleReceipt {
     + 32    // mint 
     + 8     // primary_sale_price
     + 8     // sale_quantity
-    + 8;    // created_at
+    + 8; // created_at
 }
-
 
 //==============================
 // Metadata

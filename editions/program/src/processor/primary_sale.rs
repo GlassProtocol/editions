@@ -1,7 +1,7 @@
 use crate::{
     error::ProgramError,
     utils::{assert_creator_shares_correct, transfer_sol},
-    PrimarySaleReceipt, PrimarySale, TransferSol,
+    PrimarySale, PrimarySaleReceipt, TransferSol,
 };
 use anchor_lang::prelude::*;
 
@@ -12,12 +12,12 @@ impl<'info> PrimarySale<'info> {
         remaining_accounts: &[AccountInfo<'info>],
         mint_authority_seeds: [&[u8]; 2],
         override_primary_sale_price: Option<u64>,
-        override_primary_sale_token_limit: Option<u32>
+        override_primary_sale_token_limit: Option<u32>,
     ) -> Result<()> {
         msg!("Primary sale");
 
-        let account_limit = override_primary_sale_token_limit.unwrap_or(self.token_parameters.primary_sale_token_limit);
-
+        let account_limit = override_primary_sale_token_limit
+            .unwrap_or(self.token_parameters.primary_sale_token_limit);
 
         if (self.token_account.amount as u32 + sale_quantity > account_limit)
             || (self.mint.supply as u32 + sale_quantity > self.token_parameters.max_supply)
@@ -37,7 +37,8 @@ impl<'info> PrimarySale<'info> {
         let primary_sale_price = if let Some(sale_quantity) = override_primary_sale_price {
             sale_quantity * sale_quantity as u64
         } else {
-            self.token_parameters.primary_primary_sale_price(sale_quantity as u64)
+            self.token_parameters
+                .primary_primary_sale_price(sale_quantity as u64)
         };
         msg!("Sale price {:?}", primary_sale_price);
         let total_fee = self.token_parameters.total_fee(primary_sale_price);

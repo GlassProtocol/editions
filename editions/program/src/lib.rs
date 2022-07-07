@@ -10,9 +10,9 @@ use anchor_spl::{
     token::{Mint, Token, TokenAccount},
 };
 use borsh::BorshDeserialize;
-use state::{PlatformSettings, DataV2, PrimarySaleReceipt, TokenParameters};
+use state::{DataV2, PlatformSettings, PrimarySaleReceipt, TokenParameters};
 use utils::{
-    PLATFORM_SETTINGS_PREFIX, METADATA_AUTHORITY_PREFIX, MINT_AUTHORITY_PREFIX,
+    METADATA_AUTHORITY_PREFIX, MINT_AUTHORITY_PREFIX, PLATFORM_SETTINGS_PREFIX,
     PRIMARY_SALE_RECEIPT_PREFIX, TOKEN_PARAMETERS_PREFIX,
 };
 
@@ -53,11 +53,8 @@ pub mod editions {
         primary_sale_token_limit: Option<u32>,
         primary_sale_price: Option<u64>,
     ) -> Result<()> {
-        ctx.accounts.process(
-            max_supply,
-            primary_sale_token_limit,
-            primary_sale_price,
-        )
+        ctx.accounts
+            .process(max_supply, primary_sale_token_limit, primary_sale_price)
     }
 
     pub fn primary_sale<'a, 'b, 'c, 'info>(
@@ -65,7 +62,7 @@ pub mod editions {
         _number_of_sales: u32,
         sale_quantity: u32,
         override_primary_sale_price: Option<u64>,
-        override_primary_sale_token_limit: Option<u32>
+        override_primary_sale_token_limit: Option<u32>,
     ) -> Result<()> {
         let mint_authority_seeds = [
             MINT_AUTHORITY_PREFIX.as_bytes(),
@@ -76,10 +73,9 @@ pub mod editions {
             ctx.remaining_accounts,
             mint_authority_seeds,
             override_primary_sale_price,
-            override_primary_sale_token_limit
+            override_primary_sale_token_limit,
         )
     }
-
 }
 
 // program and program data accounts commented out because they don't work
@@ -253,7 +249,6 @@ impl<'info> From<CreateTokenParameters<'info>> for CreateMetaData<'info> {
         }
     }
 }
-
 
 #[derive(Clone)]
 pub struct TokenMetadata;

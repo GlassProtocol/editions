@@ -1,7 +1,7 @@
 use crate::{
     state::{DataV2, TokenParameters},
     utils::{assert_creator_shares_correct, create_metadata_accounts_v2},
-    CreateMetaData, CreateTokenParameters, 
+    CreateMetaData, CreateTokenParameters,
 };
 use anchor_lang::prelude::*;
 
@@ -27,8 +27,6 @@ impl<'info> CreateTokenParameters<'info> {
             token_parameters_data.platform_fee_basis_points,
             token_parameters_data.creator_fee_basis_points,
         )?;
-
-
 
         create_metadata_accounts_v2(
             CpiContext::new_with_signer(
