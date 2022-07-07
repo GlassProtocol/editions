@@ -10,4 +10,7 @@ target/*
 target/deploy/*
 
 !target/deploy/editions-keypair.json
+!target/deploy/platform-signer-keypair.json
+!target/deploy/platform-treasury-keypair.json
+!target/deploy/program_authority-keypair.json
 !target/idl

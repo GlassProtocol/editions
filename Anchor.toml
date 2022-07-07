@@ -1,7 +1,8 @@
 [features]
 seeds = false
+
 [programs.localnet]
-editions = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+editions = "GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y"
 
 [workspace]
 members = ["editions/program"]
@@ -11,7 +12,17 @@ url = "https://anchor.projectserum.com"
 
 [provider]
 cluster = "localnet"
-wallet = "/Users/samsends/.config/solana/id.json"
+wallet = "target/deploy/program_authority-keypair.json"
+commitment = "confirmed"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test]
+startup_wait = 20000
+[test.validator]
+url = "https://api.devnet.solana.com"
+[[test.validator.clone]]
+address = "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+[[test.validator.clone]]
+address = "hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk"

@@ -6,7 +6,8 @@
     "dependencies": {
         "@metaplex-foundation/mpl-core": "^0.6.1",
         "@project-serum/anchor": "^0.24.2",
-        "@solana/spl-token": "^0.2.0"
+        "@solana/spl-token": "^0.2.0",
+        "@solana/web3.js": "^1.47.3"
     },
     "devDependencies": {
         "@metaplex-foundation/solita": "^0.12.1",

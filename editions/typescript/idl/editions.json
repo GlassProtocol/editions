@@ -527,6 +527,9 @@
     }
   ],
   "metadata": {
-    "address": "GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y"
+    "address": "GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y",
+    "origin": "anchor",
+    "binaryVersion": "0.25.0",
+    "libVersion": "0.25.0"
   }
 }
