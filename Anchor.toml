@@ -3,6 +3,9 @@ seeds = false
 [programs.localnet]
 editions = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
 
+[workspace]
+members = ["editions/program"]
+
 [registry]
 url = "https://anchor.projectserum.com"
 
