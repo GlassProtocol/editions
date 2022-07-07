@@ -1,0 +1,30 @@
+[package]
+name = "editions"
+version = "0.1.0"
+description = "Glass protocol editions"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "editions"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+test-bpf = []
+
+[dependencies]
+# anchor-lang = { git = "https://github.com/project-serum/anchor.git", branch = "master", features=["init-if-needed"] }
+# anchor-spl = { git = "https://github.com/project-serum/anchor.git", branch = "master" }
+# mpl-token-metadata = { git = "https://github.com/metaplex-foundation/metaplex-program-library.git", branch = "master", features = ["no-entrypoint"] }
+anchor-lang = { version = "0.25.0", features=["init-if-needed"]  }
+anchor-spl = { version = "0.25.0" }
+mpl-token-metadata = { version = "1.2.7", features = ["no-entrypoint"] }
+
+[dev-dependencies]
+solana-sdk = "1.10.29"
+solana-program-test = "1.10.29"
+anchor-client = { git = "https://github.com/project-serum/anchor.git", branch = "master" }
