@@ -72,7 +72,7 @@ export const updateTokenParametersInstructionDiscriminator = [
 export function createUpdateTokenParametersInstruction(
   accounts: UpdateTokenParametersInstructionAccounts,
   args: UpdateTokenParametersInstructionArgs,
-  programId = new web3.PublicKey('hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk')
+  programId = new web3.PublicKey('GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y')
 ) {
   const [data] = updateTokenParametersStruct.serialize({
     instructionDiscriminator: updateTokenParametersInstructionDiscriminator,

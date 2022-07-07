@@ -91,7 +91,7 @@ export const primarySaleInstructionDiscriminator = [
 export function createPrimarySaleInstruction(
   accounts: PrimarySaleInstructionAccounts,
   args: PrimarySaleInstructionArgs,
-  programId = new web3.PublicKey('hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk')
+  programId = new web3.PublicKey('GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y')
 ) {
   const [data] = primarySaleStruct.serialize({
     instructionDiscriminator: primarySaleInstructionDiscriminator,

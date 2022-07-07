@@ -1,0 +1,529 @@
+{
+  "version": "0.1.0",
+  "name": "gpl_editions",
+  "instructions": [
+    {
+      "name": "createPlatformSettings",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "platformSettings",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "data",
+          "type": {
+            "defined": "PlatformSettings"
+          }
+        }
+      ]
+    },
+    {
+      "name": "createTokenParameters",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "platformSigner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "metadataAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenParameters",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platform",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformSettings",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "metadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tokenParametersData",
+          "type": {
+            "defined": "TokenParameters"
+          }
+        },
+        {
+          "name": "metadataData",
+          "type": {
+            "defined": "DataV2"
+          }
+        },
+        {
+          "name": "isMutable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "updateTokenParameters",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "platformSigner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenParameters",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformSettings",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "maxSupply",
+          "type": {
+            "option": "u32"
+          }
+        },
+        {
+          "name": "primarySaleTokenLimit",
+          "type": {
+            "option": "u32"
+          }
+        },
+        {
+          "name": "primarySalePrice",
+          "type": {
+            "option": "u64"
+          }
+        }
+      ]
+    },
+    {
+      "name": "primarySale",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "platformSigner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenParameters",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "platform",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformSettings",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "primaryReceipt",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "numberOfSales",
+          "type": "u32"
+        },
+        {
+          "name": "saleQuantity",
+          "type": "u32"
+        },
+        {
+          "name": "overridePrimarySalePrice",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "overridePrimarySaleTokenLimit",
+          "type": {
+            "option": "u32"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "PlatformSettings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "platformTreasury",
+            "type": "publicKey"
+          },
+          {
+            "name": "platformSigner",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenParameters",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tokenOwner",
+            "type": "publicKey"
+          },
+          {
+            "name": "mint",
+            "type": "publicKey"
+          },
+          {
+            "name": "metadata",
+            "type": "publicKey"
+          },
+          {
+            "name": "primarySalePrice",
+            "type": "u64"
+          },
+          {
+            "name": "maxSupply",
+            "type": "u32"
+          },
+          {
+            "name": "primarySaleTokenLimit",
+            "type": "u32"
+          },
+          {
+            "name": "numberOfSales",
+            "type": "u32"
+          },
+          {
+            "name": "platformFeeBasisPoints",
+            "type": "u16"
+          },
+          {
+            "name": "creatorFeeBasisPoints",
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PrimarySaleReceipt",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "buyer",
+            "type": "publicKey"
+          },
+          {
+            "name": "mint",
+            "type": "publicKey"
+          },
+          {
+            "name": "primarySalePrice",
+            "type": "u64"
+          },
+          {
+            "name": "saleQuantity",
+            "type": "u64"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "DataV2",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "docs": [
+              "The name of the asset"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "docs": [
+              "The symbol for the asset"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "docs": [
+              "URI pointing to JSON representing the asset"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "sellerFeeBasisPoints",
+            "docs": [
+              "Royalty basis points that goes to creators in secondary sales (0-10000)"
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "creators",
+            "docs": [
+              "Array of creators, optional"
+            ],
+            "type": {
+              "option": {
+                "vec": {
+                  "defined": "Creator"
+                }
+              }
+            }
+          },
+          {
+            "name": "collection",
+            "docs": [
+              "Collection"
+            ],
+            "type": {
+              "option": {
+                "defined": "Collection"
+              }
+            }
+          },
+          {
+            "name": "uses",
+            "docs": [
+              "Uses"
+            ],
+            "type": {
+              "option": {
+                "defined": "Uses"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Creator",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey"
+          },
+          {
+            "name": "verified",
+            "type": "bool"
+          },
+          {
+            "name": "share",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Uses",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "useMethod",
+            "type": {
+              "defined": "UseMethod"
+            }
+          },
+          {
+            "name": "remaining",
+            "type": "u64"
+          },
+          {
+            "name": "total",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Collection",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "verified",
+            "type": "bool"
+          },
+          {
+            "name": "key",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UseMethod",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Burn"
+          },
+          {
+            "name": "Multiple"
+          },
+          {
+            "name": "Single"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidPrimaryQuantity",
+      "msg": "Invalid primary quantity."
+    },
+    {
+      "code": 6001,
+      "name": "InvalidFeePercentages",
+      "msg": "Seller fee basis points not equal to platform fee basis points creator fee basis points."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidCreators",
+      "msg": "Provided creator accounts do not match Metadata creators."
+    },
+    {
+      "code": 6003,
+      "name": "InactiveSemiFungible",
+      "msg": "Semi fungible has an inactive status."
+    }
+  ]
+}

@@ -68,7 +68,7 @@ export const createPlatformSettingsInstructionDiscriminator = [
 export function createCreatePlatformSettingsInstruction(
   accounts: CreatePlatformSettingsInstructionAccounts,
   args: CreatePlatformSettingsInstructionArgs,
-  programId = new web3.PublicKey('hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk')
+  programId = new web3.PublicKey('GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y')
 ) {
   const [data] = createPlatformSettingsStruct.serialize({
     instructionDiscriminator: createPlatformSettingsInstructionDiscriminator,

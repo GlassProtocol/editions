@@ -90,7 +90,7 @@ export class PrimarySaleReceipt implements PrimarySaleReceiptArgs {
    */
   static gpaBuilder(
     programId: web3.PublicKey = new web3.PublicKey(
-      'hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk'
+      'GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y'
     )
   ) {
     return beetSolana.GpaBuilder.fromStruct(programId, primarySaleReceiptBeet)

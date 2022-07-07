@@ -92,7 +92,7 @@ export const createTokenParametersInstructionDiscriminator = [
 export function createCreateTokenParametersInstruction(
   accounts: CreateTokenParametersInstructionAccounts,
   args: CreateTokenParametersInstructionArgs,
-  programId = new web3.PublicKey('hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk')
+  programId = new web3.PublicKey('GeTddTEvfE8My8HNbnSeS1o2tzyn9Z4S194tCUZPbQ8Y')
 ) {
   const [data] = createTokenParametersStruct.serialize({
     instructionDiscriminator: createTokenParametersInstructionDiscriminator,
